@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Learning Northius · Menú principal</title>
+<base target="_top">
+<style>
+:root{--navy:#020523;--pink:#F02B58;--white:#FFFFFF;--grey:#E2E2E8;--soft:rgba(255,255,255,.86);--font:Aeonik,"Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--navy);font-family:var(--font);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:32px;padding-right:32px}
+.kicker{margin:0;font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+h1,h2,h3,p{margin:0}
+
+/* Cabecera */
+.top{background:var(--navy);color:var(--white)}
+.top .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:16px 32px;padding-top:18px;padding-bottom:18px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.logo{height:22px;width:auto;display:block}
+.brand span{font-size:13px;letter-spacing:.16em;text-transform:uppercase;border-left:1px solid rgba(255,255,255,.4);padding-left:14px}
+.top nav{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:15px}
+.top nav a{text-decoration:none;padding:8px 0}
+.top nav a:hover{color:var(--pink)}
+
+/* Portada */
+.hero{background:var(--navy);color:var(--white)}
+.hero .wrap{display:flex;flex-wrap:wrap;gap:48px;padding-top:56px;padding-bottom:72px}
+.hero-main{flex:999 1 520px;min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+.hero-main .txt{display:flex;flex-direction:column;gap:20px}
+.hero h1{font-size:clamp(40px,6vw,64px);line-height:1.05;font-weight:300}
+.hero h1 b{font-weight:700}
+.hero h1 em{font-style:normal;font-weight:700;color:var(--pink)}
+.hero .lead{font-size:19px;line-height:1.45;max-width:560px;color:var(--soft)}
+.stats{display:flex;flex-wrap:wrap;gap:32px;border-top:1px solid rgba(255,255,255,.25);padding-top:24px}
+.stats .n{font-size:40px;font-weight:700}
+.stats .n.pk{color:var(--pink)}
+.stats .l{margin-top:4px;font-size:14px}
+.start{flex:1 1 340px;min-width:0;background:var(--pink);color:var(--navy);padding:32px;display:flex;flex-direction:column;gap:18px;clip-path:polygon(0 0,calc(100% - 40px) 0,100% 40px,100% 100%,0 100%)}
+.start .kicker{font-weight:700}
+.start .t{font-size:30px;line-height:1.15;font-weight:700}
+.start .d{font-size:16px;line-height:1.45}
+.btn{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:0 20px;background:var(--navy);color:var(--white);text-decoration:none;font-weight:700;font-size:16px}
+.start .btn{margin-top:auto}
+.btn:hover{background:#1a1d3a}
+
+/* Selector de marca */
+.brands{border-bottom:1px solid var(--grey)}
+.brands .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding-top:24px;padding-bottom:24px}
+.brands h2{font-size:14px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;padding:0 16px;font:inherit;font-size:15px;cursor:pointer;border-radius:0;border:1px solid var(--navy);background:var(--white);color:var(--navy)}
+.chip:hover{border-color:var(--pink)}
+.chip[aria-pressed="true"]{background:var(--navy);color:var(--white);font-weight:700}
+
+/* Secciones */
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px}
+.sec-head .tt{display:flex;flex-direction:column;gap:8px}
+.sec-head h2{font-size:40px;line-height:1.1;font-weight:300}
+.sec-head h2 b{font-weight:700}
+.sec-head p.note{font-size:16px;max-width:420px;line-height:1.45}
+
+.route{background:var(--grey)}
+.route .wrap{display:flex;flex-direction:column;gap:28px;padding-top:64px;padding-bottom:64px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;list-style:none;margin:0;padding:0}
+.mod{background:var(--white);color:var(--navy);text-decoration:none;padding:24px;min-height:300px;height:100%;display:flex;flex-direction:column;gap:14px;clip-path:polygon(0 0,calc(100% - 28px) 0,100% 28px,100% 100%,0 100%);transition:transform .18s ease}
+.mod:hover{transform:translateY(-4px)}
+.mod .row{display:flex;justify-content:space-between;align-items:flex-start}
+.mod .num{font-size:44px;font-weight:700;line-height:1;color:var(--pink)}
+.mod h3{margin-top:8px;font-size:22px;font-weight:700}
+.mod p{font-size:15px;line-height:1.45}
+.go{margin-top:auto;display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:0 14px;background:var(--navy);color:var(--white);font-size:15px;font-weight:700}
+.mod:hover .go{background:var(--pink);color:var(--navy)}
+
+.practice .wrap{display:flex;flex-direction:column;gap:28px;padding-top:72px;padding-bottom:72px}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.tool{text-decoration:none;padding:32px;min-height:260px;display:flex;flex-direction:column;gap:14px;clip-path:polygon(0 0,calc(100% - 32px) 0,100% 32px,100% 100%,0 100%);transition:transform .18s ease}
+.tool:hover{transform:translateY(-4px)}
+.tool.dark{background:var(--navy);color:var(--white)}
+.tool.light{background:var(--grey);color:var(--navy)}
+.tool h3{font-size:26px;font-weight:700}
+.tool p{font-size:16px;line-height:1.45}
+.tool.dark p{color:var(--soft)}
+.tool .foot{margin-top:auto;display:flex;justify-content:space-between;font-size:15px;font-weight:700;padding-top:14px;border-top:1px solid rgba(2,5,35,.2)}
+.tool.dark .foot{border-color:rgba(255,255,255,.25)}
+.tool.dark .foot span:last-child{color:var(--pink)}
+
+.restricted{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;border:1px solid var(--navy);padding:20px 24px}
+.restricted .tx{flex:999 1 320px;min-width:0}
+.restricted .tx strong{font-size:18px}
+.restricted .tx p{margin-top:4px;font-size:15px}
+.outline{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border:1px solid var(--navy);color:var(--navy);text-decoration:none;font-weight:700;font-size:15px}
+.outline:hover{background:var(--navy);color:var(--white)}
+
+.foot-band{background:var(--navy);color:var(--white)}
+.foot-band .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px;padding-top:40px;padding-bottom:40px}
+.foot-band .claim{display:flex;align-items:center;gap:20px}
+.foot-band .claim p{font-size:22px;font-weight:300}
+.foot-band .claim b{font-weight:700}
+.foot-band .claim em{font-style:normal;font-weight:700;color:var(--pink)}
+.foot-band .tag{font-size:14px;letter-spacing:.08em}
+
+@media (max-width:640px){
+  .wrap{padding-left:20px;padding-right:20px}
+  .hero .wrap{padding-top:36px;padding-bottom:44px;gap:32px}
+  .sec-head h2{font-size:30px}
+  .chips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}
+  .chip{flex-shrink:0;white-space:nowrap}
+  .mod{min-height:0}
+  .tool{min-height:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.mod,.tool{transition:none}.mod:hover,.tool:hover{transform:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+<div class="wrap">
+<a class="brand" href="https://learning.northius.com/course/view.php?id=2&amp;section=1" aria-label="Learning Northius, ir al inicio"><svg xmlns="http://www.w3.org/2000/svg" viewBox="168.445 481.746 611.125 114.781" class="logo" role="img" aria-label="Northius" focusable="false" xmlns:c2pa="http://c2pa.org/manifest"><g fill="#FFFFFF"><path d="M 168.445312 595.4375 L 201.300781 595.4375 L 201.300781 519.730469 L 168.445312 486.878906 Z M 168.445312 595.4375"></path><path d="M 335.121094 570.886719 C 331.773438 574.863281 327.160156 576.882812 321.410156 576.882812 C 315.683594 576.882812 311.246094 574.921875 307.855469 570.886719 C 304.472656 566.867188 302.757812 561.519531 302.757812 555 C 302.757812 548.480469 304.472656 543.132812 307.855469 539.109375 C 311.25 535.078125 315.683594 533.117188 321.410156 533.117188 C 327.160156 533.117188 331.773438 535.132812 335.121094 539.109375 C 338.503906 543.132812 340.21875 548.480469 340.21875 555 C 340.21875 561.519531 338.503906 566.867188 335.121094 570.886719 M 343.714844 518.808594 C 337.316406 515.425781 329.8125 513.714844 321.410156 513.714844 C 313.011719 513.714844 305.507812 515.425781 299.105469 518.808594 C 292.679688 522.203125 287.652344 527.101562 284.152344 533.367188 C 280.664062 539.613281 278.894531 546.890625 278.894531 555 C 278.894531 563.105469 280.664062 570.382812 284.152344 576.628906 C 287.652344 582.898438 292.683594 587.796875 299.105469 591.1875 C 305.5 594.570312 313.007812 596.285156 321.410156 596.285156 C 329.816406 596.285156 337.320312 594.570312 343.714844 591.1875 C 350.132812 587.800781 355.164062 582.929688 358.667969 576.710938 C 362.15625 570.511719 363.925781 563.207031 363.925781 555 C 363.925781 546.894531 362.15625 539.617188 358.667969 533.367188 C 355.167969 527.101562 350.136719 522.203125 343.714844 518.808594"></path><path d="M 234.035156 563.429688 L 266.890625 596.285156 L 266.890625 487.726562 L 234.035156 487.726562 Z M 234.035156 563.429688"></path><path d="M 582.242188 595.363281 L 605.640625 595.363281 L 605.640625 514.636719 L 582.242188 514.636719 Z M 582.242188 595.363281"></path><path d="M 770.894531 551.871094 C 765.308594 548.492188 757.214844 546.15625 746.820312 544.917969 C 742.003906 544.410156 738.523438 543.949219 736.472656 543.546875 C 734.515625 543.160156 732.921875 542.535156 731.734375 541.683594 C 730.675781 540.929688 730.160156 539.804688 730.160156 538.246094 C 730.160156 535.984375 731.222656 534.21875 733.40625 532.835938 C 735.691406 531.390625 738.773438 530.65625 742.570312 530.65625 C 746.640625 530.65625 750.015625 531.566406 752.59375 533.351562 C 755.128906 535.117188 756.492188 537.300781 756.765625 540.027344 L 756.84375 540.800781 L 778.433594 540.800781 L 778.378906 539.882812 C 777.863281 531.648438 774.261719 525.117188 767.671875 520.472656 C 761.160156 515.886719 752.515625 513.507812 741.972656 513.40625 C 735.441406 513.40625 729.574219 514.515625 724.535156 516.699219 C 719.453125 518.902344 715.453125 522.078125 712.640625 526.140625 C 709.824219 530.214844 708.394531 534.960938 708.394531 540.242188 C 708.394531 545.5625 709.820312 549.894531 712.628906 553.117188 C 715.394531 556.296875 719.128906 558.652344 723.714844 560.128906 C 728.199219 561.570312 733.902344 562.769531 740.683594 563.695312 C 745.597656 564.304688 749.179688 564.84375 751.328125 565.296875 C 753.363281 565.726562 754.941406 566.417969 756.019531 567.34375 C 757.019531 568.203125 757.507812 569.496094 757.507812 571.292969 C 757.507812 573.742188 756.382812 575.582031 754.066406 576.914062 C 751.625 578.320312 748.207031 579.03125 743.90625 579.03125 C 739.441406 579.03125 735.746094 578 732.929688 575.960938 C 730.136719 573.945312 728.648438 571.386719 728.371094 568.140625 L 728.304688 567.351562 L 706.714844 567.351562 L 706.757812 568.257812 C 707.164062 576.898438 710.839844 583.820312 717.675781 588.824219 C 724.433594 593.773438 733.308594 596.285156 744.054688 596.285156 C 750.976562 596.285156 757.164062 595.207031 762.441406 593.074219 C 767.769531 590.929688 771.996094 587.8125 775.003906 583.808594 C 778.035156 579.777344 779.570312 575.046875 779.570312 569.753906 C 779.570312 561.367188 776.652344 555.351562 770.894531 551.871094"></path><path d="M 603.535156 485.449219 C 601.023438 482.992188 597.820312 481.746094 594.015625 481.746094 C 590.214844 481.746094 586.988281 482.988281 584.429688 485.441406 C 581.855469 487.90625 580.550781 491.039062 580.550781 494.75 C 580.550781 498.460938 581.851562 501.617188 584.421875 504.128906 C 586.980469 506.640625 590.210938 507.910156 594.015625 507.910156 C 597.824219 507.910156 601.03125 506.636719 603.542969 504.121094 C 606.054688 501.609375 607.332031 498.457031 607.332031 494.75 C 607.332031 491.042969 606.054688 487.914062 603.535156 485.449219 Z M 603.535156 485.449219"></path><path d="M 560.9375 522.558594 C 554.804688 516.6875 546.871094 513.710938 537.363281 513.710938 C 528.226562 513.710938 520.671875 516.804688 514.863281 522.902344 L 514.863281 487.777344 L 491.464844 487.777344 L 491.464844 595.363281 L 514.863281 595.363281 L 514.863281 553.921875 C 514.863281 547.398438 516.375 542.253906 519.355469 538.640625 C 522.335938 535.027344 526.367188 533.269531 531.675781 533.269531 C 536.765625 533.269531 540.464844 534.84375 542.980469 538.085938 C 545.511719 541.347656 546.792969 546.210938 546.792969 552.539062 L 546.792969 595.363281 L 570.195312 595.363281 L 570.195312 551.617188 C 570.195312 538.21875 567.078125 528.441406 560.9375 522.558594 Z M 560.9375 522.558594"></path><path d="M 626.902344 587.683594 C 633.035156 593.554688 640.96875 596.527344 650.476562 596.527344 C 659.609375 596.527344 667.167969 593.4375 672.976562 587.339844 L 674.347656 595.363281 L 696.375 595.363281 L 696.375 514.878906 L 672.976562 514.878906 L 672.976562 556.320312 C 672.976562 562.84375 671.464844 567.984375 668.484375 571.601562 C 665.503906 575.214844 661.472656 576.972656 656.164062 576.972656 C 651.074219 576.972656 647.375 575.398438 644.859375 572.15625 C 642.328125 568.894531 641.042969 564.03125 641.042969 557.703125 L 641.042969 514.878906 L 617.644531 514.878906 L 617.644531 558.625 C 617.644531 572.023438 620.761719 581.800781 626.902344 587.683594 Z M 626.902344 587.683594"></path><path d="M 399.296875 553.125 C 399.296875 544.949219 400.394531 542.738281 402.71875 539.933594 C 404.882812 537.324219 407.882812 536.101562 414.425781 536.101562 L 425.765625 536.101562 L 425.765625 514.636719 L 419.03125 514.636719 C 416.835938 514.636719 411.019531 514.636719 405.921875 517.351562 C 403.125 518.839844 400.546875 521.144531 398.898438 524.707031 L 397.199219 514.636719 L 375.929688 514.636719 L 375.929688 595.363281 L 399.332031 595.363281 Z M 399.296875 553.125"></path><path d="M 437.769531 571.90625 C 437.769531 587.46875 445.660156 595.363281 461.226562 595.363281 L 479.460938 595.363281 L 479.460938 575.34375 L 467.988281 575.34375 C 465.480469 575.34375 463.699219 574.8125 462.695312 573.765625 C 461.683594 572.710938 461.167969 570.894531 461.167969 568.371094 L 461.167969 536.101562 L 479.460938 536.101562 L 479.460938 514.632812 L 461.167969 514.632812 L 461.167969 487.777344 L 437.769531 487.777344 Z M 437.769531 571.90625"></path></g></svg><span>Learning</span></a>
+<nav aria-label="Secciones de esta página">
+<a href="#ruta" target="_self">Mi ruta</a>
+<a href="#practica" target="_self">Practica y consulta</a>
+<a href="https://learning.northius.com/course/view.php?id=2&amp;section=46">Colaboradores</a>
+</nav>
+</div>
+</header>
+
+<main>
+<section class="hero">
+<div class="wrap">
+<div class="hero-main">
+<div class="txt">
+<p class="kicker">Learning Northius · Formación comercial</p>
+<h1>Hola.<br><b>Hoy vendes mejor</b> <em>que ayer.</em></h1>
+<p class="lead">Tu ruta de formación como asesor en cinco módulos, con práctica, recursos para tus entrevistas y sesiones grabadas. Todo en un mismo sitio.</p>
+</div>
+<div class="stats">
+<div><p class="n pk">5</p><p class="l">módulos en tu ruta</p></div>
+<div><p class="n">9</p><p class="l">marcas en el catálogo</p></div>
+</div>
+</div>
+<div class="start">
+<p class="kicker">¿Primera vez aquí?</p>
+<p class="t">Empieza por el módulo 01: Onboarding</p>
+<p class="d">Conoce el Grupo Northius, sus principios y sus pilares formativos. Después, sigue la ruta en orden.</p>
+<a class="btn" href="https://learning.northius.com/course/view.php?id=2&amp;section=1">Empezar el Onboarding <span aria-hidden="true">→</span></a>
+</div>
+</div>
+</section>
+
+<section class="brands" aria-labelledby="marcas-t">
+<div class="wrap">
+<h2 id="marcas-t">Me estoy formando en</h2>
+<div class="chips" id="chips"></div>
+</div>
+</section>
+
+<section class="route" id="ruta" aria-labelledby="ruta-t">
+<div class="wrap">
+<div class="sec-head">
+<div class="tt">
+<p class="kicker">Ruta del asesor · <span class="brand-name">Tokio School</span></p>
+<h2 id="ruta-t">Cinco módulos, <b>en este orden</b></h2>
+</div>
+<p class="note">Avanza módulo a módulo. Al terminar los cinco, la Zona de evaluación mide tu nivel.</p>
+</div>
+<ol class="steps">
+<li><a class="mod" href="https://learning.northius.com/course/view.php?id=2&amp;section=1">
+<div class="row"><span class="num" aria-hidden="true">01</span>
+<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#020523" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg></div>
+<h3>Onboarding</h3>
+<p>Principios, valores y pilares formativos. Conoce el Grupo Northius.</p>
+<span class="go">Entrar al módulo <span aria-hidden="true">→</span></span>
+</a></li>
+<li><a class="mod" href="https://learning.northius.com/course/view.php?id=2&amp;section=2">
+<div class="row"><span class="num" aria-hidden="true">02</span>
+<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#020523" stroke-width="1.5" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg></div>
+<h3>Producto</h3>
+<p>Áreas, cursos y pilares formativos de <span class="brand-name">Tokio School</span>, con sus fichas comerciales.</p>
+<span class="go">Entrar al módulo <span aria-hidden="true">→</span></span>
+</a></li>
+<li><a class="mod" href="https://learning.northius.com/course/view.php?id=2&amp;section=18">
+<div class="row"><span class="num" aria-hidden="true">03</span>
+<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#020523" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+<h3>Método de venta</h3>
+<p>Escucha, analiza, orienta, argumenta, genera beneficios y cierra tu trabajo.</p>
+<span class="go">Entrar al módulo <span aria-hidden="true">→</span></span>
+</a></li>
+<li><a class="mod" href="https://learning.northius.com/course/view.php?id=2&amp;section=30">
+<div class="row"><span class="num" aria-hidden="true">04</span>
+<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#020523" stroke-width="1.5" aria-hidden="true"><rect x="3" y="6" width="18" height="12"/><path d="M3 10h18M7 15h4"/></svg></div>
+<h3>Formas de pago</h3>
+<p>Qué forma de pago ofrecer según el tipo de cliente y su situación socioeconómica.</p>
+<span class="go">Entrar al módulo <span aria-hidden="true">→</span></span>
+</a></li>
+<li><a class="mod" href="https://learning.northius.com/course/view.php?id=2&amp;section=36">
+<div class="row"><span class="num" aria-hidden="true">05</span>
+<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#020523" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="17" r="2.2"/><circle cx="11" cy="7" r="2.2"/><circle cx="16" cy="14" r="2.2"/><circle cx="20" cy="5" r="1.6"/><path d="M7.2 15.2l2.8-6.2M12.6 8.6l2.2 3.6M17.3 12.4l2-5.9"/></svg></div>
+<h3>Salesforce</h3>
+<p>Tu CRM de gestión. Aprende a utilizarlo con los vídeo-tutoriales.</p>
+<span class="go">Entrar al módulo <span aria-hidden="true">→</span></span>
+</a></li>
+</ol>
+</div>
+</section>
+
+<section class="practice" id="practica" aria-labelledby="practica-t">
+<div class="wrap">
+<div class="sec-head">
+<div class="tt">
+<p class="kicker">Practica · Consulta · Recicla</p>
+<h2 id="practica-t">Para el día a día, <b>siempre a mano</b></h2>
+</div>
+</div>
+<div class="tools">
+<a class="tool dark" href="https://learning.northius.com/course/view.php?id=2&amp;section=37">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F02B58" stroke-width="1.5" aria-hidden="true"><rect x="5" y="4" width="14" height="17"/><path d="M9 4V2.5h6V4M8.5 12l2.5 2.5 4.5-5"/></svg>
+<h3>Zona de evaluación</h3>
+<p>Mide tu nivel de conocimiento. Formación sin control es una pérdida de tiempo.</p>
+<p class="foot"><span>Hacer un test</span><span aria-hidden="true">→</span></p>
+</a>
+<a class="tool light" href="https://learning.northius.com/course/view.php?id=2&amp;section=38">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#020523" stroke-width="1.5" aria-hidden="true"><path d="M4 20V14M9.3 20V10M14.6 20v-6M20 20V6M4 11l5-4 5 3 6-6M16 4h4v4"/></svg>
+<h3>Recursos comerciales</h3>
+<p>Material creado para ayudarte en tus entrevistas comerciales. No lo pases por alto.</p>
+<p class="foot"><span>Ver los recursos</span><span aria-hidden="true">→</span></p>
+</a>
+<a class="tool light" href="https://learning.northius.com/course/view.php?id=2&amp;section=52">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#020523" stroke-width="1.5" aria-hidden="true"><rect x="3" y="6" width="13" height="12"/><path d="M16 10l5-3v10l-5-3M8 9.5v5l4-2.5z"/></svg>
+<h3>Telepresenciales</h3>
+<p>Sesiones formativas grabadas. Muy recomendables para tu reciclaje.</p>
+<p class="foot"><span>Ver las sesiones</span><span aria-hidden="true">→</span></p>
+</a>
+</div>
+<div class="restricted">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#020523" stroke-width="1.5" aria-hidden="true"><rect x="5" y="11" width="14" height="10"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+<div class="tx">
+<strong>Colaboradores</strong>
+<p>Espacio reservado para colaboradores del Grupo Northius. Acceso restringido.</p>
+</div>
+<a class="outline" href="https://learning.northius.com/course/view.php?id=2&amp;section=46">Entrar a Colaboradores</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="foot-band">
+<div class="wrap">
+<div class="claim">
+<svg viewBox="336.566 380.910 293.020 325.648" width="34" height="38" role="img" aria-label="Northius"><g fill="#F02B58"><path d="M 336.566406 704.03125 L 434.355469 704.03125 L 434.355469 478.703125 L 336.566406 380.910156 Z"/><path d="M 531.792969 608.765625 L 629.585938 706.558594 L 629.585938 383.4375 L 531.792969 383.4375 Z"/></g></svg>
+<p>Quien invierte en <b>formación</b>, invierte en <em>futuro</em></p>
+</div>
+<p class="tag">#PEOPLEONTOP</p>
+</div>
+</footer>
+
+<script>
+(function(){
+  var BRANDS=['Tokio School','Campus Training','Unisport','Nubika','Flou','35MM','CEMP','MINT','CEAC FP'];
+  var KEY='learning-northius-marca';
+  var current=BRANDS[0];
+  try{var saved=localStorage.getItem(KEY);if(saved&&BRANDS.indexOf(saved)>-1)current=saved;}catch(e){}
+  var box=document.getElementById('chips');
+  function paint(){
+    var names=document.querySelectorAll('.brand-name');
+    for(var i=0;i<names.length;i++)names[i].textContent=current;
+    var bs=box.querySelectorAll('button');
+    for(var j=0;j<bs.length;j++)bs[j].setAttribute('aria-pressed',bs[j].textContent===current?'true':'false');
+  }
+  BRANDS.forEach(function(n){
+    var b=document.createElement('button');
+    b.type='button';b.className='chip';b.textContent=n;
+    b.addEventListener('click',function(){current=n;try{localStorage.setItem(KEY,n);}catch(e){}paint();});
+    box.appendChild(b);
+  });
+  paint();
+})();
+</script>
+</body>
+</html>
